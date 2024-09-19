@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MyPortfolio Bootstrap Template - Work Single</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MyPortfolio - v4.10.0
+  * Template URL: https://bootstrapmade.com/myportfolio-bootstrap-portfolio-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Navbar ======= -->
+    <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+        <div class="container py-2 py-md-5">
+            <div class="row align-items-start">
+                <div class="col-md-2">
+                    <ul class="custom-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 d-none d-md-block  mr-auto">
+                    <div class="row align-items-start">
+                        <a href="https://www.linkedin.com/in/carlos-cordero-bernabeu/" target="_blank">
+                            <span class="bi bi-linkedin"></span>
+                        </a>
+                        <a href="https://twitter.com/CarlosCorDev" target="_blank">
+                            <span class="bi bi-twitter"></span>
+                        </a>
+                        <a href="mailto:carloscorderobernabeu@gmail.com" target="_blank">carloscorderobernabeu@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4 d-none d-md-block">
+                    <h3>Passion for Learning</h3>
+                    <p>Enthusiastic videogames programmer always looking for something new to learn. <br></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light custom-navbar">
+        <div class="container position-relative d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">MyPortfolio.</a>
+            <a href="https://drive.google.com/file/d/1AJNhgfnm71xpxHe7ck9y1FhnfddcMJOC/view?usp=sharing" target="_blank" class="readmore position-absolute start-50 translate-middle-x">Download my CV</a>
+            <a href="#" class="burger ms-auto" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <section class="section">
+            <div class="container">
+                <div class="row mb-4 align-items-center">
+                    <div class="col-md-6" data-aos="fade-up">
+                        <h2>Vorpal Engine</h2>
+                        <p>Vorpal Engine is a videogame engine made by two people, with its focus on graphics programming techniques, while being extremely user-friendly. </p>
+                        <p>The main inspiration for the Vorpal Engine was the following <a href="https://youtu.be/kEB11PQ9Eo8?si=mJ31U3B1VrrFxgxb" target="_blank">video</a> by CodeParade. Inspired by that demo, I wanted to create a games engine that could support portals as well as implement those portals in VR.</p>
+                        <p> The finished project has both features working (although under some limitations). Here is how they work:</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3>Portal Rendering</h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/pao-HuAra4s?si=cFqmKLGoPRndJwmi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+
+                                <div class="mb-5">
+                                    <p>
+                                        Portal Rendering works by rendering the scene from the point of view of the player if they to be placed at the other side of the portal.
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" data-aos="fade-up">
+                    <p> This is process that happens each frame to render a scene with portals:</p>
+                    <p>The current recursion level is set to the maximum of bounces allowed between portals.</p>
+                    <p>An occlusion culling query is issued so the portals outside of the main scene view don’t perform useless draw calls.</p>
+                    <p>A framebuffer is filled with the scene drawing taken from the point of view of the camera if it were to be placed at the other side of the portal, and cropped to the size of the portal. </p>
+                    <p>From that scene render, the process is repeated so now every portal visible in the scene rendered in the framebuffer, also renders the scene.</p>
+                    <p>This process runs indefinitely until either there are no portals left to render from in one of the views, or the current recursion level reaches 0 (if there were any portals visible from this last framebuffer, this are draw with a pink texture representing the missing texture).</p>
+
+                </div>
+            </div>
+
+            <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3>VR Rendering</h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RO0PU5zrfuo?si=JrTB1r1DA7y2RK38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+
+                                <div class="mb-5">
+                                    <p>
+                                        The VR rendering pipeline, fundamentally, is based around drawing the scene two times from different slightly offset points of view, with different MVP matrices being used for each of the eyes rendering.
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" data-aos="fade-up">
+                    <p> In our case, the following process is followed to render a VR scene:</p>
+                    <h3>Main VR view:</h3>
+                    <p>A framebuffer is created for each of the eyes.</p>
+                    <p>In each framebuffer, the scene is identically draw but each eye gets its own MVP (model, view, projection) matrix from the eye point of view. </p>
+                    <p>The controller Axis (rays that go from the controllers outwards) are rendered directly on top of each of the textures. </p>
+                    <p>Similarly , the controller models and poses are obtained from .json binding files (located at data/openvr ) which, automatically load all the information using the OpenVR SDK backend.</p>
+                    <p>The framebuffers are submitted to the VR headset as textures created by the VRcompositor, again, using the OpenVR SDK backend.</p>
+                    <h3>Companion Window view:</h3>
+                    <p>The framebuffers are reused to render each of the eye views, displayed in a split screen manner. This setup replaces the typical rendering of the window.</p>
+                    <p>Then ImguiUI is then rendered on top of it</p>
+
+
+                    <p> The complete features of the engine are:</p>
+                    <ul style="margin-left: 20px; text-align: justify;">
+                        <h3>Graphics techniques</h3>
+                        <li>Blinn-Phong Lighting</li>
+                        <li>Forward rendering</li>
+                        <li>Shadow-Mapping</li>
+                        <li>Deferred rendering</li>
+                        <li>Portals</li>
+                        <li>VR implementation</li>
+                        <li>Billboards</li>
+                        <li>SSAO</li>
+                        <li>Blur</li>
+                        <h3>Quality Of Life</h3>
+                        <li>ECS</li>
+                        <li>Jobs system (Multithreading)</li>
+                        <li>Camera (Game mode and play mode decoupled)</li>
+                        <li>Resource Manager</li>
+                        <li>Pseudoscripting subsystem & Playmode</li>
+                        <li>User friendly UI</li>
+                        <li>Scene Saving</li>
+                        <li>Input abstraction</li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+        </section>
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="mb-1">&copy; Copyright MyPortfolio. All Rights Reserved</p>
+                    <div class="credits">
+                        <!--
+                          All the links in the footer should remain intact.
+                          You can delete the links only if you purchased the pro version.
+                          Licensing information: https://bootstrapmade.com/license/
+                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=MyPortfolio
+                        -->
+                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 social text-md-end">
+                    <a href="https://twitter.com/CarlosCorDev" target="_blank"><span class="bi bi-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/carlos-cordero-bernabeu/" target="_blank"><span class="bi bi-linkedin"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
