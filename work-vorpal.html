@@ -96,11 +96,20 @@
                     <div class="row align-items-stretch">
 
                         <div class="col-md-8" data-aos="fade-up">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/pao-HuAra4s?si=cFqmKLGoPRndJwmi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/pao-HuAra4s?si=cFqmKLGoPRndJwmi"
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
 
                         <div class="col-md-3 ml-auto" data-aos="fade-up">
                             <div class="sticky-content">
+                                <p class="mb-4"><span class="text-muted"><div></div></span></p>
 
                                 <div class="mb-5">
                                     <p>
@@ -132,7 +141,15 @@
                     <div class="row align-items-stretch">
 
                         <div class="col-md-8" data-aos="fade-up">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RO0PU5zrfuo?si=JrTB1r1DA7y2RK38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/RO0PU5zrfuo?si=JrTB1r1DA7y2RK38"
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
 
                         <div class="col-md-3 ml-auto" data-aos="fade-up">
@@ -160,9 +177,7 @@
                     <p>Similarly , the controller models and poses are obtained from .json binding files (located at data/openvr ) which, automatically load all the information using the OpenVR SDK backend.</p>
                     <p>The framebuffers are submitted to the VR headset as textures created by the VRcompositor, again, using the OpenVR SDK backend.</p>
                     <h3>Companion Window view:</h3>
-                    <p>The framebuffers are reused to render each of the eye views, displayed in a split screen manner. This setup replaces the typical rendering of the window.</p>
-                    <p>Then ImguiUI is then rendered on top of it</p>
-
+                    <p>The framebuffers are reused to render each of the eye views, displayed in a split screen manner. This setup replaces the typical rendering of the window. Then ImguiUI is then rendered on top of it.</p>
 
                     <p> The complete features of the engine are:</p>
                     <ul style="margin-left: 20px; text-align: justify;">
