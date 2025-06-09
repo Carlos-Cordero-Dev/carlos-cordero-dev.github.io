@@ -79,9 +79,11 @@
 
 		<!-- CV Button -->
 		<div class="mt-2 mt-md-0 d-flex justify-content-center w-100 w-md-auto">
-		  <a href="https://drive.google.com/file/d/1AJNhgfnm71xpxHe7ck9y1FhnfddcMJOC/view?usp=sharing"
+		  <a href="assets/cv/cv_CarlosCorderoV2.pdf"
+			 download="Carlos_Cordero_CV.pdf"
+			 class="readmore"
 			 target="_blank"
-			 class="readmore">
+			 >
 			Download my CV
 		  </a>
 		</div>
@@ -107,6 +109,7 @@
                         <div id="filters" class="filters">
                             <a href="#" data-filter="*" class="active">All</a>
                             <a href="#" data-filter=".ue">Unreal Engine</a>
+							<a href="#" data-filter=".ps5">PS5</a>
                             <a href="#" data-filter=".gra">Graphics Programming</a>
                             <a href="#" data-filter=".unity">Unity</a>
                             <a href="#" data-filter=".gj">Game Jams</a>
@@ -118,10 +121,21 @@
                         <a href="work-lowbatt.html" class="item-wrap fancybox">
                             <div class="work-info">
                                 <h3>Low Batt</h3>
-                                <span>Unreal Engine</span>
+                                <span>Steam published, Unreal Engine</span>
                             </div>
                             <video autoplay loop muted playsinline class="img-fluid">
                                 <source src="assets/vods/lowbattclips.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+					 <div class="item ps5 col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-ps5.html" class="item-wrap fancybox">
+                            <div class="work-info">
+                                <h3>Toy adventure</h3>
+                                <span>PS5 Game</span>
+                            </div>
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="assets/vods/vodtoyclip.mp4" type="video/mp4">
                             </video>
                         </a>
                     </div>
@@ -136,7 +150,15 @@
                             </video>
                         </a>
                     </div>
-
+					 <div class="item gra col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-obradinn.html" class="item-wrap fancybox">
+                            <div class="work-info">
+                                <h3>Replicating a game's graphic style</h3>
+                                <span>Postprocess Effect, Graphics Programming</span>
+                            </div>
+							<img src="assets/vods/gif_obradin.gif" class="img-fluid">
+                        </a>
+                    </div>
                     <div class="item unity col-sm-6 col-md-4 col-lg-4 mb-4">
                         <a href="work-btb.html" class="item-wrap fancybox">
                             <div class="work-info">
@@ -148,15 +170,13 @@
                             </video>
                         </a>
                     </div>
-                    <div class="item gra col-sm-6 col-md-4 col-lg-4 mb-4">
-                        <a href="work-proc.html" class="item-wrap fancybox">
+					 <div class="item unity gj col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-obradinn.html" class="item-wrap fancybox">
                             <div class="work-info">
-                                <h3>Procedural Terrain Generation</h3>
-                                <span>Graphics Programming, C++, OpenGL</span>
+                                <h3>BlowOut</h3>
+                                <span>Unity, Game Jam</span>
                             </div>
-                            <video autoplay loop muted playsinline class="img-fluid">
-                                <source src="assets/vods/proctclip.mp4" type="video/mp4">
-                            </video>
+							<img src="assets/vods/gif_bubbles.gif" class="img-fluid">
                         </a>
                     </div>
                     <div class="item unity gj col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -167,6 +187,17 @@
                             </div>
                             <video autoplay loop muted playsinline class="img-fluid">
                                 <source src="assets/vods/gnomedclip.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+					<div class="item unity col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-ele.html" class="item-wrap fancybox">
+                            <div class="work-info">
+                                <h3>Elevator</h3>
+                                <span>Unity</span>
+                            </div>
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="assets/vods/elevatorclip.mp4" type="video/mp4">
                             </video>
                         </a>
                     </div>
@@ -181,15 +212,25 @@
                             </video>
                         </a>
                     </div>
-
-                    <div class="item unity col-sm-6 col-md-4 col-lg-4 mb-4">
-                        <a href="work-ele.html" class="item-wrap fancybox">
+					<div class="item gra col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-proc.html" class="item-wrap fancybox">
                             <div class="work-info">
-                                <h3>Elevator</h3>
-                                <span>Unity</span>
+                                <h3>Procedural Terrain Generation</h3>
+                                <span>Graphics Programming, C++, OpenGL</span>
                             </div>
                             <video autoplay loop muted playsinline class="img-fluid">
-                                <source src="assets/vods/elevatorclip.mp4" type="video/mp4">
+                                <source src="assets/vods/proctclip.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+					<div class="item gra col-sm-6 col-md-4 col-lg-4 mb-4">
+                        <a href="work-edk.html" class="item-wrap fancybox">
+                            <div class="work-info">
+                                <h3>Small Custom Engine</h3>
+                                <span>Graphics Programming, C++</span>
+                            </div>
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="assets/vods/edk3clip.mp4" type="video/mp4">
                             </video>
                         </a>
                     </div>
@@ -204,17 +245,7 @@
                             </video>
                         </a>
                     </div>
-                    <div class="item gra col-sm-6 col-md-4 col-lg-4 mb-4">
-                        <a href="work-edk.html" class="item-wrap fancybox">
-                            <div class="work-info">
-                                <h3>Small Custom Engine</h3>
-                                <span>Graphics Programming, C++</span>
-                            </div>
-                            <video autoplay loop muted playsinline class="img-fluid">
-                                <source src="assets/vods/edk3clip.mp4" type="video/mp4">
-                            </video>
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </section><!-- End  Works Section -->
