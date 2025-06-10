@@ -97,28 +97,26 @@
             <div class="container">
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-6" data-aos="fade-up">
-                        <h2>Vorpal Engine</h2>
-                        <p>Vorpal Engine is a videogame engine made by two people, with its focus on graphics programming techniques, while being extremely user-friendly. </p>
-                        <p>The main inspiration for the Vorpal Engine was the following <a href="https://youtu.be/kEB11PQ9Eo8?si=mJ31U3B1VrrFxgxb" target="_blank">video</a> by CodeParade. Inspired by that demo, I wanted to create a games engine that could support portals as well as implement those portals in VR.</p>
-                        <p> The finished project has both features working (although under some limitations). Here is how they work:</p>
+                        <h2>Recreating <b>Return of the Obra Dinn</b>'s artstyle</h2>
+                        <p>
+						Using DirectX11 and a custom renderer written from scratch, I recreated this game's peculiar art style. The final look of the game is achieved using three distinct techniques:  Dithering, edge detection, and texture mapping.
+						</p>
+                        <p>
+						To recreate the scene I used a deferred rendering solution, composed following these steps:
+						</p>
                     </div>
                 </div>
             </div>
 
             <div class="site-section pb-0">
                 <div class="container" data-aos="fade-up">
-                    <h3>Portal Rendering</h3>
+                    <h3>Deferred rendering breakdown</h3>
+					<p></p>
                     <div class="row align-items-stretch">
 
                         <div class="col-md-8" data-aos="fade-up">
                             <div class="video-wrapper">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/pao-HuAra4s?si=cFqmKLGoPRndJwmi"
-                                        title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin"
-                                        allowfullscreen>
-                                </iframe>
+                                <img width="100%"  src="assets/img/shadowmap.png" class="img-fluid">
                             </div>
                         </div>
 
@@ -128,7 +126,7 @@
 
                                 <div class="mb-5">
                                     <p>
-                                        Portal Rendering works by rendering the scene from the point of view of the player if they to be placed at the other side of the portal.
+										<b>Shadow mapping</b> - an orthogonal view of the scene from the point of view of a specific (directional in our case) light, storing depth information as a texture.
                                     </p>
 
                                 </div>
@@ -140,30 +138,18 @@
                 </div>
 
                 <div class="container" data-aos="fade-up">
-                    <p> This is process that happens each frame to render a scene with portals:</p>
-                    <p>The current recursion level is set to the maximum of bounces allowed between portals.</p>
-                    <p>An occlusion culling query is issued so the portals outside of the main scene view don’t perform useless draw calls.</p>
-                    <p>A framebuffer is filled with the scene drawing taken from the point of view of the camera if it were to be placed at the other side of the portal, and cropped to the size of the portal. </p>
-                    <p>From that scene render, the process is repeated so now every portal visible in the scene rendered in the framebuffer, also renders the scene.</p>
-                    <p>This process runs indefinitely until either there are no portals left to render from in one of the views, or the current recursion level reaches 0 (if there were any portals visible from this last framebuffer, this are draw with a pink texture representing the missing texture).</p>
-
+					<p></p>
                 </div>
             </div>
 
             <div class="site-section pb-0">
                 <div class="container" data-aos="fade-up">
-                    <h3>VR Rendering</h3>
+                    <h3></h3>
                     <div class="row align-items-stretch">
 
                         <div class="col-md-8" data-aos="fade-up">
                             <div class="video-wrapper">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/RO0PU5zrfuo?si=JrTB1r1DA7y2RK38"
-                                        title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin"
-                                        allowfullscreen>
-                                </iframe>
+	                            <img width="100%"  src="assets/vods/dif_norm_pos.gif" class="img-fluid">
                             </div>
                         </div>
 
@@ -171,9 +157,9 @@
                             <div class="sticky-content">
 
                                 <div class="mb-5">
-                                    <p>
-                                        The VR rendering pipeline, fundamentally, is based around drawing the scene two times from different slightly offset points of view, with different MVP matrices being used for each of the eyes rendering.
-                                    </p>
+									<p> 
+										Typical rendering information is bound to specific textures: <b>diffuse</b>, <b>normals</b>, <b>world positions</b>.
+									</p>
 
                                 </div>
 
@@ -181,47 +167,224 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="container" data-aos="fade-up">
-                    <p> In our case, the following process is followed to render a VR scene:</p>
-                    <h3>Main VR view:</h3>
-                    <p>A framebuffer is created for each of the eyes.</p>
-                    <p>In each framebuffer, the scene is identically draw but each eye gets its own MVP (model, view, projection) matrix from the eye point of view. </p>
-                    <p>The controller Axis (rays that go from the controllers outwards) are rendered directly on top of each of the textures. </p>
-                    <p>Similarly , the controller models and poses are obtained from .json binding files (located at data/openvr ) which, automatically load all the information using the OpenVR SDK backend.</p>
-                    <p>The framebuffers are submitted to the VR headset as textures created by the VRcompositor, again, using the OpenVR SDK backend.</p>
-                    <h3>Companion Window view:</h3>
-                    <p>The framebuffers are reused to render each of the eye views, displayed in a split screen manner. This setup replaces the typical rendering of the window. Then ImguiUI is then rendered on top of it.</p>
-
-                    <p> The complete features of the engine are:</p>
-                    <ul style="margin-left: 20px; text-align: justify;">
-                        <h3>Graphics techniques</h3>
-                        <li>Blinn-Phong Lighting</li>
-                        <li>Forward rendering</li>
-                        <li>Shadow-Mapping</li>
-                        <li>Deferred rendering</li>
-                        <li>Portals</li>
-                        <li>VR implementation</li>
-                        <li>Billboards</li>
-                        <li>SSAO</li>
-                        <li>Blur</li>
-                        <h3>Quality Of Life</h3>
-                        <li>ECS</li>
-                        <li>Jobs system (Multithreading)</li>
-                        <li>Camera (Game mode and play mode decoupled)</li>
-                        <li>Resource Manager</li>
-                        <li>Pseudoscripting subsystem & Playmode</li>
-                        <li>User friendly UI</li>
-                        <li>Scene Saving</li>
-                        <li>Input abstraction</li>
-
-
-                    </ul>
-
-                </div>
+                </div>  
             </div>
 
+			 <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3></h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/img/faces.png" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+
+                                <div class="mb-5">
+									<p> 
+										An algorithm assigns every <b>mesh face</b> a different <b>color</b>, and the result is stored in a texture (used for edge detection). This is achieved by using the normal of each of the vertices to generate a pseudo "seed" for a color. Color interpolation between vertices is disabled for this step.									
+									</p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+			
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3></h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/img/blinnphong.png" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+
+                                <div class="mb-5">
+									<p> 
+										Completed Blinn-Phong lighting pass									
+									</p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3></h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/img/sm.png" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+
+                                <div class="mb-5">
+									<p> 
+										Completed Shadow map pass (project first texture onto the scene). It is important to note that for the sake of our effect, any nuance in shadow intensity is discarded as the final scene only considers black or white as valid colors.									
+									</p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+			
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+					<p></p>
+					<h3>Final Scene composition</h3>
+					<p>Using all those textures the final scene is composed:</p>
+					<p></p>
+
+				</div>
+			</div>
+
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <h3></h3>
+                    <div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/vods/binnphong_sm.gif" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 ml-auto" data-aos="fade-up">
+                            <div class="sticky-content">
+                                <div class="mb-5">
+									<p> 
+										A scene without the effect can be visualized which includes basic Blinn-Phong lighting, an albedo texture, and shadow mapping.									
+									</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+			
+			
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+					<p></p>
+					<p>
+					The dithering technique works by assigning each color in the scene a luminance value which will be converted to a pattern using the precomputed dither textures.
+					</p>
+					<p>The pattern is assigned in world space using texture mapping, projecting the dither textures onto the meshes. Screen space dithering would make the pattern ignore camera rotation and perspective. </p>
+					<p></p>
+				</div>
+			</div>
+
+			<div class="site-section pb-0">
+				<div class="container" data-aos="fade-up">
+					<h3></h3>
+					<div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/vods/ss_nomap.gif" class="img-fluid">
+                            </div>
+                        </div>
+
+						<div class="col-md-3 ml-auto" data-aos="fade-up">
+							<div class="sticky-content">
+								<div class="mb-5">
+									<p> 
+										Screen Space dithering (Pattern remains static independent of camera or perspective).
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
+			
+			<div class="site-section pb-0">
+				<div class="container" data-aos="fade-up">
+					<h3></h3>
+					<div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/vods/ws_mapped.gif" class="img-fluid">
+                            </div>
+                        </div>
+
+						<div class="col-md-3 ml-auto" data-aos="fade-up">
+							<div class="sticky-content">
+								<div class="mb-5">
+									<p> 
+										World Space dithering (Desired look).
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
+			
+			<div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+					<p></p>
+					<p>
+						The edge detection algorithm uses the texture with the colors to determine borders, simply identifying as an edge any intersection between two differently colored areas.
+					</p>
+					<p>
+						The shadow and edge detection effects are applied independently from the dithering. By tweeking the textures and their frequencies we can adjust how much influence said textures have on the final look of the scene. An example of a complete scene is:
+					</p>
+					<p></p>
+				</div>
+			</div>
+
+			<div class="site-section pb-0">
+				<div class="container" data-aos="fade-up">
+					<h3></h3>
+					<div class="row align-items-stretch">
+
+                        <div class="col-md-8" data-aos="fade-up">
+                            <div class="video-wrapper">
+                                <img width="100%"  src="assets/vods/gif_obradin.gif" class="img-fluid">
+                            </div>
+                        </div>
+
+						<div class="col-md-3 ml-auto" data-aos="fade-up">
+							<div class="sticky-content">
+								<div class="mb-5">
+									<p> 
+										Final Scene look.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
 
         </section>
 

@@ -65,7 +65,7 @@
 
         </div>
     </div>
-
+	
 	<nav class="navbar navbar-light custom-navbar">
 	  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
 
@@ -97,130 +97,62 @@
             <div class="container">
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-6" data-aos="fade-up">
-                        <h2>Vorpal Engine</h2>
-                        <p>Vorpal Engine is a videogame engine made by two people, with its focus on graphics programming techniques, while being extremely user-friendly. </p>
-                        <p>The main inspiration for the Vorpal Engine was the following <a href="https://youtu.be/kEB11PQ9Eo8?si=mJ31U3B1VrrFxgxb" target="_blank">video</a> by CodeParade. Inspired by that demo, I wanted to create a games engine that could support portals as well as implement those portals in VR.</p>
-                        <p> The finished project has both features working (although under some limitations). Here is how they work:</p>
-                    </div>
+                        <h2>Toy Adventure - PS5 Game</h2>
+                        <p>Toy Adventure is a small game developed using the PS5 toolchain in an industry-standard PS5 devkit at Sheffield Hallam University. The project was treated as if it were a product launched on the PlayStation store, having to clear the Sony PS5 TRC sweep and having to comply with official Sony guidelines.</p>
+						<p>The game was made by a 4-person team consisting of 3 programmers and one designer.</p>
+					</div>
                 </div>
             </div>
 
             <div class="site-section pb-0">
-                <div class="container" data-aos="fade-up">
-                    <h3>Portal Rendering</h3>
+                <div class="container">
                     <div class="row align-items-stretch">
 
                         <div class="col-md-8" data-aos="fade-up">
                             <div class="video-wrapper">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/pao-HuAra4s?si=cFqmKLGoPRndJwmi"
-                                        title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin"
-                                        allowfullscreen>
-                                </iframe>
+								
+							<video  autoplay loop muted playsinline class="img-fluid">
+                                <source width="560" height="315"  src="assets/vods/vodtoyclip.mp4" type="video/mp4">
+                            </video>
                             </div>
                         </div>
 
+
                         <div class="col-md-3 ml-auto" data-aos="fade-up">
                             <div class="sticky-content">
+                                <h3 class="h3">Gameplay</h3>
                                 <p class="mb-4"><span class="text-muted"><div></div></span></p>
 
                                 <div class="mb-5">
                                     <p>
-                                        Portal Rendering works by rendering the scene from the point of view of the player if they to be placed at the other side of the portal.
+									The game consists of a Pikmin-inspired exploration adventure, where you have to collect toy soldiers to advance through different areas on the map. There are also melee and ranged enemies that offer some basic combat.
                                     </p>
-
                                 </div>
-
-
+                                <p></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="container" data-aos="fade-up">
-                    <p> This is process that happens each frame to render a scene with portals:</p>
-                    <p>The current recursion level is set to the maximum of bounces allowed between portals.</p>
-                    <p>An occlusion culling query is issued so the portals outside of the main scene view don’t perform useless draw calls.</p>
-                    <p>A framebuffer is filled with the scene drawing taken from the point of view of the camera if it were to be placed at the other side of the portal, and cropped to the size of the portal. </p>
-                    <p>From that scene render, the process is repeated so now every portal visible in the scene rendered in the framebuffer, also renders the scene.</p>
-                    <p>This process runs indefinitely until either there are no portals left to render from in one of the views, or the current recursion level reaches 0 (if there were any portals visible from this last framebuffer, this are draw with a pink texture representing the missing texture).</p>
+                    <br>
+                    <h3>Game Contributions</h3>
+                    <p align="justify">	
+						<ul>
+						My role in the project consisted of:
+						<li>Making a tool that converted unity scenes into our binary format to make level prototyping faster.</li>
+						<li>Programming the toy soldier minions that follow the player.</li>
+						<li>Programming basic AABB and OBB collisions.</li>
+						<li>General gameplay interactions (player - enemy, toy soldier- wall).</li>
+						</ul>
+					</p>
+					<br>
 
+					<h3>Engine Technical feats</h3>
+                    <p align="justify">
+					The models, map, and skeletal animations are made via custom tooling which imports native 3DS MAX formats into a custom internal binary format created for the PS5 engine. The engine also implements static shadows in the form of lightmaps, and dynamic shadows via shadowmapping.
+					</p>
                 </div>
-            </div>
-
-            <div class="site-section pb-0">
-                <div class="container" data-aos="fade-up">
-                    <h3>VR Rendering</h3>
-                    <div class="row align-items-stretch">
-
-                        <div class="col-md-8" data-aos="fade-up">
-                            <div class="video-wrapper">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/RO0PU5zrfuo?si=JrTB1r1DA7y2RK38"
-                                        title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin"
-                                        allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 ml-auto" data-aos="fade-up">
-                            <div class="sticky-content">
-
-                                <div class="mb-5">
-                                    <p>
-                                        The VR rendering pipeline, fundamentally, is based around drawing the scene two times from different slightly offset points of view, with different MVP matrices being used for each of the eyes rendering.
-                                    </p>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container" data-aos="fade-up">
-                    <p> In our case, the following process is followed to render a VR scene:</p>
-                    <h3>Main VR view:</h3>
-                    <p>A framebuffer is created for each of the eyes.</p>
-                    <p>In each framebuffer, the scene is identically draw but each eye gets its own MVP (model, view, projection) matrix from the eye point of view. </p>
-                    <p>The controller Axis (rays that go from the controllers outwards) are rendered directly on top of each of the textures. </p>
-                    <p>Similarly , the controller models and poses are obtained from .json binding files (located at data/openvr ) which, automatically load all the information using the OpenVR SDK backend.</p>
-                    <p>The framebuffers are submitted to the VR headset as textures created by the VRcompositor, again, using the OpenVR SDK backend.</p>
-                    <h3>Companion Window view:</h3>
-                    <p>The framebuffers are reused to render each of the eye views, displayed in a split screen manner. This setup replaces the typical rendering of the window. Then ImguiUI is then rendered on top of it.</p>
-
-                    <p> The complete features of the engine are:</p>
-                    <ul style="margin-left: 20px; text-align: justify;">
-                        <h3>Graphics techniques</h3>
-                        <li>Blinn-Phong Lighting</li>
-                        <li>Forward rendering</li>
-                        <li>Shadow-Mapping</li>
-                        <li>Deferred rendering</li>
-                        <li>Portals</li>
-                        <li>VR implementation</li>
-                        <li>Billboards</li>
-                        <li>SSAO</li>
-                        <li>Blur</li>
-                        <h3>Quality Of Life</h3>
-                        <li>ECS</li>
-                        <li>Jobs system (Multithreading)</li>
-                        <li>Camera (Game mode and play mode decoupled)</li>
-                        <li>Resource Manager</li>
-                        <li>Pseudoscripting subsystem & Playmode</li>
-                        <li>User friendly UI</li>
-                        <li>Scene Saving</li>
-                        <li>Input abstraction</li>
-
-
-                    </ul>
-
-                </div>
-            </div>
 
 
         </section>
