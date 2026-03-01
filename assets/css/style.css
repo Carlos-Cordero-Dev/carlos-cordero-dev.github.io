@@ -521,9 +521,38 @@ h6,
 }
 
 .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* iframe debajo del placeholder */
+  opacity: 0; /* empezará oculto y se hará fade-in al cargar */
+  transition: opacity .35s ease;
+}
+
+/* Placeholder por encima del iframe */
+.iframe-placeholder {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 2;
+  transition: opacity .25s ease;
+  /* slight dark overlay for readability of overlay text if needed */
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.12);
+}
+
+/* When iframe is loaded, we remove the placeholder. If you want a play icon overlay, add it here */
+.iframe-placeholder.play-overlay::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" viewBox="0 0 24 24" fill="%23fff"><path d="M8 5v14l11-7z"/></svg>') center center no-repeat;
+  opacity: 0.9;
 }
