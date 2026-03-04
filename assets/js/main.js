@@ -251,7 +251,7 @@
    */
   document.addEventListener('DOMContentLoaded', () => {
     // Setup lazy load for iframe embeds first
-    setupLazyIframes();
+    //setupLazyIframes();
 
     // Attempt to set posters for local <video> elements
     setupVideoPosters();
