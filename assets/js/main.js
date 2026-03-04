@@ -96,12 +96,12 @@
       try {
         const src = iframe.getAttribute('src');
         if (!src) return;
-        if (src.includes('player.vimeo.com') || src.includes('youtube.com') || src.includes('youtube-nocookie.com')) {
+          if (src.includes('player.vimeo.com') || src.includes('youtube.com') || src.includes('youtube-nocookie.com')) {
           if (!iframe.hasAttribute('data-src')) {
             iframe.setAttribute('data-src', src);
             iframe.removeAttribute('src');
             iframe.setAttribute('loading', 'lazy');
-            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+            //iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
             iframe.classList.add('lazy-iframe');
           }
         }
